@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - Entry point
+ * main - prints all possible different combinations of three digits
  *
  * Return: 0
 */
@@ -11,7 +11,7 @@ int main(void)
 	int tens = '0';
 	int hundreds = '0';
 
-	for (hundreds = '0'; hundreds <= '9'; hundred++)
+	for (hundreds = '0'; hundreds <= '9'; hundreds++)
 	{
 		for (tens = '0'; tens <= '9'; tens++)
 		{

@@ -6,6 +6,7 @@
 
 int main(void)
 {
+
 	long int i, j, k, l;
 
 	j = 1;
@@ -15,7 +16,7 @@ int main(void)
 	{
 		if (j != 20365011074)
 		{
-			printf("%1d, ", j);
+			printf("%1d,", j);
 		}
 		else
 		{
@@ -30,7 +31,5 @@ int main(void)
 	return (0);
 }
 
-	return (0);
-}
 
 

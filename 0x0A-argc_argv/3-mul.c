@@ -30,6 +30,7 @@ int _atoi(char *s)
 		if (s[i] >= '0' && s[i] <= '9')
 		{
 			digit = s[i] - '0';
+
 			if (d % 2)
 				digit = -digit;
 			n = n * 10 + digit;
@@ -63,6 +64,7 @@ int main(int argc, char *argv[])
 	if (argc < 3 || argc > 3)
 	{
 		printf("Error\n");
+
 		return (1);
 	}
 

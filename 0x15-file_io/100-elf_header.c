@@ -185,7 +185,6 @@ void print_abi(unsigned char *e_ident)
 	printf("  ABI Version:	 %d\n",
 			e_ident[EI_ABIVERSION]);
 }
-
 /**
  * print_type - Prints the type of an ELF header.
  * @e_type: The ELF type.
@@ -218,7 +217,6 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 				printf("<unknown: %x>\n", e_type);
 		}
 }
-
 /**
  * print_entry - Prints the entry point of an ELF header.
  * @e_entry: The address of the ELF entry point.
@@ -233,16 +231,13 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 		e_entry = ((e_entry << 8) & 0xFF00FF00) |
 			((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
-
 	}
 
 	if (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
-
 	else
 		printf("%#lx\n", e_entry);
 }
-
 /**
  * close_elf - Closes an ELF file.
  * @elf: The file descriptor of the ELF file.
@@ -258,7 +253,6 @@ void close_elf(int elf)
 		exit(98);
 	}
 }
-
 /**
  * main - Displays the information contained in the
  * ELF header at the start of an ELF file.
@@ -313,5 +307,3 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	close_elf(o);
 	return (0);
 }
-
-

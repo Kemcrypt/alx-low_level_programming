@@ -195,7 +195,6 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
-
 	printf("  Type:		");
 
 	switch (e_type)
@@ -228,12 +227,11 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
-
-	printf("  Entry point address:	");
+	printf("  Entry point address:		");
 
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
-		e_entry = ((e_entry << 8) & 0xFF00FF00) |
+		e_entry = ((e_entry << 8) & 0xFF00FF00)	|
 			((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
@@ -243,6 +241,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 	else
 		printf("%#lx\n", e_entry);
 }
+
 /**
  * close_elf - Closes an ELF file.
  * @elf: The file descriptor of the ELF file.
@@ -251,7 +250,6 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
  */
 void close_elf(int elf)
 {
-
 	if (close(elf) == -1)
 	{
 		dprintf(STDERR_FILENO,
@@ -259,22 +257,20 @@ void close_elf(int elf)
 		exit(98);
 	}
 }
+
 /**
  * main - Displays the information contained in the
- * ELF header at the start of an ELF file.
+ *	ELF header at the start of an ELF file.
  * @argc: The number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
  *
  * Return: 0 on success.
- *
  * Description: If the file is not an ELF File or
- * the function fails - exit code 98.
+ *	the function fails - exit code 98.
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-
 	Elf64_Ehdr *header;
-
 	int o, r;
 
 	o = open(argv[1], O_RDONLY);
@@ -289,7 +285,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
-		}
+	}
 	r = read(o, header, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
